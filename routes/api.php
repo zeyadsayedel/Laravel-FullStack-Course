@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // route group 
-Route::prefix('v1')->group(function () {
+/* Route::prefix('v1')->group(function () {
     // get to get all data
     // get posts
     Route::get('/posts', function () {
@@ -60,7 +61,7 @@ Route::prefix('v1')->group(function () {
             ]
         ]);
     });
-});
+}); */
 
 
 
@@ -121,3 +122,5 @@ Route::post('login', function(Request $request){
 Route::middleware('throttle:custom')->get('limited' , function(){
     return 'not limited yet';
 });
+
+Route::apiResource('posts', PostController::class);
